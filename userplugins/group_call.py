@@ -52,6 +52,8 @@ from utils import (
     scheduler
 )
 
+PREFIX = "$"
+
 async def is_reply(_, client, message):
     if Config.REPLY_PM:
         return True
