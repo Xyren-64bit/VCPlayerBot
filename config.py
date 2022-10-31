@@ -37,7 +37,7 @@ class Config:
     API_ID = int(os.environ.get("API_ID", ''))
     API_HASH = os.environ.get("API_HASH", "")
     BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
-   PREFIX = os.getenv("PREFIX", "*")
+    PREFIX = os.environ.get("PREFIX", "*")
     SESSION = os.environ.get("SESSION_STRING", "")
 
     #Stream Chat and Log Group
