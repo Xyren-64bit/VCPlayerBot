@@ -251,6 +251,7 @@ async def sync_to_db():
         await db.edit_config("RECORDING_DUMP", Config.RECORDING_DUMP)
         await db.edit_config("RECORDING_TITLE", Config.RECORDING_TITLE)
         await db.edit_config("HAS_SCHEDULE", Config.HAS_SCHEDULE)
+        await db.edit_config("PREFIX", Config.PREFIX)
 
 async def sync_from_db():
     if Config.DATABASE_URI:  
@@ -262,6 +263,7 @@ async def sync_from_db():
         Config.ADMIN_ONLY = await db.get_config("ADMIN_ONLY")
         Config.SHUFFLE = await db.get_config("SHUFFLE")
         Config.EDIT_TITLE = await db.get_config("EDIT_TITLE")
+        Config.PREFIX = await db.get_config("PREFIX")
         Config.CHAT = int(await db.get_config("CHAT"))
         Config.playlist = await db.get_playlist()
         Config.LOG_GROUP = await db.get_config("LOG_GROUP")
@@ -302,6 +304,10 @@ async def check_db():
         db.add_config("REPLY_PM", Config.REPLY_PM)
     if not await db.is_saved("ADMIN_ONLY"):
         db.add_config("ADMIN_ONLY", Config.ADMIN_ONLY)
+        
+    if not await db.is_saved("PREFIX"):
+        db.add_config("PREFIX", Config.PREFIX)
+        
     if not await db.is_saved("SHUFFLE"):
         db.add_config("SHUFFLE", Config.SHUFFLE)
     if not await db.is_saved("EDIT_TITLE"):
