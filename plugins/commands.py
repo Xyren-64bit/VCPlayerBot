@@ -48,7 +48,7 @@ from pyrogram import (
     Client, 
     filters
 )
-from config.Config import PREFIX
+from config import PREFIX
 IST = pytz.timezone(Config.TIME_ZONE)
 if Config.DATABASE_URI:
     from utils import db
