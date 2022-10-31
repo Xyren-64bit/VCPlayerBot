@@ -280,7 +280,7 @@ async def add_to_playlist(_, message: Message):
             await download(track)
 
 
-@Client.on_message(filters.command(["leave", f"leave@{Config.BOT_USERNAME}"]) & admin_filter & chat_filter)
+@Client.on_message(filters.command(["leave", f"leave@{Config.BOT_USERNAME}"], PREFIX) & admin_filter & chat_filter)
 async def leave_voice_chat(_, m: Message):
     if not Config.CALL_STATUS:        
         k=await m.reply("Not joined any voicechat.")
@@ -292,7 +292,7 @@ async def leave_voice_chat(_, m: Message):
 
 
 
-@Client.on_message(filters.command(["shuffle", f"shuffle@{Config.BOT_USERNAME}"]) & admin_filter & chat_filter)
+@Client.on_message(filters.command(["shuffle", f"shuffle@{Config.BOT_USERNAME}"], PREFIX) & admin_filter & chat_filter)
 async def shuffle_play_list(client, m: Message):
     if not Config.CALL_STATUS:
         k = await m.reply("Not joined any voicechat.")
