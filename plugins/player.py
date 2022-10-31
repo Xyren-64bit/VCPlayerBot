@@ -46,7 +46,7 @@ from utils import (
     c_play,
     is_ytdl_supported
 )
-from config import PREFIX
+
 from pyrogram.types import (
     InlineKeyboardMarkup, 
     InlineKeyboardButton
@@ -63,7 +63,7 @@ from pyrogram import (
     filters
     )
 
-
+PREFIX = "$"
 admin_filter=filters.create(is_admin) 
 
 @Client.on_message(filters.command(["play", "fplay", f"play@{Config.BOT_USERNAME}", f"fplay@{Config.BOT_USERNAME}", PREFIX]) & chat_filter)
