@@ -45,7 +45,7 @@ class Config:
     LOG_GROUP=os.environ.get("LOG_GROUP", "")
 
     #Stream 
-    STREAM_URL=os.environ.get("STARTUP_STREAM", "https://youtube.com/playlist?list=OLAK5uy_nuXRv8HryJDIpCPwYqsX0e4EqiuKXAibk")
+    STREAM_URL=os.environ.get("STARTUP_STREAM", "https://www.youtube.com/watch?v=zcrUCvBD16k")
    
     #Database
     DATABASE_URI=os.environ.get("DATABASE_URI", None)
@@ -61,6 +61,7 @@ class Config:
     SHUFFLE=is_enabled(os.environ.get("SHUFFLE", 'True'))
     ADMIN_ONLY=is_enabled(os.environ.get("ADMIN_ONLY", "False"))
     REPLY_MESSAGE=os.environ.get("REPLY_MESSAGE", False)
+    STARTUP_STREAM=os.environ.get("STARTUP_STREAM", "https://t.me/DumpPlaylist/2369")
     EDIT_TITLE = os.environ.get("EDIT_TITLE", True)
     #others
     
@@ -340,7 +341,7 @@ __VCPlayer allows to control admins, that is you can add admins and remove them 
 It is recommended to use a MongoDb database for better experience, else all you admins will get reset after restart.__
 
 Command: **/vcpromote**
-__You can promote a admin with their username or user id or by replying to that users message.__
+__You can promote a admin with their username or user id or by replying to that users message.cxx
 
 Command: **/vcdemote**
 __Remove an admin from admin list__
