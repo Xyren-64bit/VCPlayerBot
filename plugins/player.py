@@ -46,6 +46,7 @@ from utils import (
     c_play,
     is_ytdl_supported
 )
+from config import PREFIX
 from pyrogram.types import (
     InlineKeyboardMarkup, 
     InlineKeyboardButton
@@ -65,7 +66,7 @@ from pyrogram import (
 
 admin_filter=filters.create(is_admin) 
 
-@Client.on_message(filters.command(["play", "fplay", f"play@{Config.BOT_USERNAME}", f"fplay@{Config.BOT_USERNAME}"]) & chat_filter)
+@Client.on_message(filters.command(["play", "fplay", f"play@{Config.BOT_USERNAME}", f"fplay@{Config.BOT_USERNAME}", PREFIX]) & chat_filter)
 async def add_to_playlist(_, message: Message):
     with suppress(MessageIdInvalid, MessageNotModified):
         admins = await get_admins(Config.CHAT)
