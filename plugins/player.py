@@ -46,7 +46,7 @@ from utils import (
     c_play,
     is_ytdl_supported
 )
-from config import PREFIX
+from config.Config import PREFIX
 from pyrogram.types import (
     InlineKeyboardMarkup, 
     InlineKeyboardButton
