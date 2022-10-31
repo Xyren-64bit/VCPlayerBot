@@ -50,14 +50,14 @@ from pyrogram.errors import (
     MessageNotModified
 )
 
-
+PREFIX = "$"
 IST = pytz.timezone(Config.TIME_ZONE)
 
 admin_filter=filters.create(is_admin) 
 
 
 
-@Client.on_message(filters.command(["schedule", f"schedule@{Config.BOT_USERNAME}"]) & chat_filter & admin_filter)
+@Client.on_message(filters.command(["schedule", f"schedule@{Config.BOT_USERNAME}"], PREFIX) & chat_filter & admin_filter)
 async def schedule_vc(bot, message):
     with suppress(MessageIdInvalid, MessageNotModified):
         type=""
@@ -246,7 +246,7 @@ async def schedule_vc(bot, message):
 
 
 
-@Client.on_message(filters.command(["slist", f"slist@{Config.BOT_USERNAME}"]) & admin_filter & chat_filter)
+@Client.on_message(filters.command(["slist", f"slist@{Config.BOT_USERNAME}"], PREFIX) & admin_filter & chat_filter)
 async def list_schedule(bot, message):
     k=await message.reply("Checking schedules...")
     if not Config.SCHEDULE_LIST:
@@ -271,7 +271,7 @@ async def list_schedule(bot, message):
     await delete_messages([message])
 
 
-@Client.on_message(filters.command(["cancel", f"cancel@{Config.BOT_USERNAME}"]) & admin_filter & chat_filter)
+@Client.on_message(filters.command(["cancel", f"cancel@{Config.BOT_USERNAME}"], PREFIX) & admin_filter & chat_filter)
 async def delete_sch(bot, message):
     with suppress(MessageIdInvalid, MessageNotModified):
         m = await message.reply("Finding the scheduled stream..")
@@ -305,7 +305,7 @@ async def delete_sch(bot, message):
         await m.edit(f"Succesfully deleted {data['1']} from scheduled list.")
         await delete_messages([message, m])
         
-@Client.on_message(filters.command(["cancelall", f"cancelall@{Config.BOT_USERNAME}"]) & admin_filter & chat_filter)
+@Client.on_message(filters.command(["cancelall", f"cancelall@{Config.BOT_USERNAME}"], PREFIX) & admin_filter & chat_filter)
 async def delete_all_sch(bot, message):
     buttons = [
         [
