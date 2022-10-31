@@ -66,7 +66,7 @@ from pyrogram import (
 PREFIX = "$"
 admin_filter=filters.create(is_admin) 
 
-@Client.on_message(filters.command(["play", "fplay", f"play@{Config.BOT_USERNAME}", f"fplay@{Config.BOT_USERNAME}", PREFIX]) & chat_filter)
+@Client.on_message(filters.command(["play", "fplay", f"play@{Config.BOT_USERNAME}", f"fplay@{Config.BOT_USERNAME}"], PREFIX) & chat_filter)
 async def add_to_playlist(_, message: Message):
     with suppress(MessageIdInvalid, MessageNotModified):
         admins = await get_admins(Config.CHAT)
@@ -308,7 +308,7 @@ async def shuffle_play_list(client, m: Message):
             await delete_messages([m, k])
 
 
-@Client.on_message(filters.command(["clearplaylist", f"clearplaylist@{Config.BOT_USERNAME}"]) & admin_filter & chat_filter)
+@Client.on_message(filters.command(["clearplaylist", f"clearplaylist@{Config.BOT_USERNAME}"], PREFIX) & admin_filter & chat_filter)
 async def clear_play_list(client, m: Message):
     if not Config.playlist:
         k = await m.reply("Playlist is empty.")  
@@ -326,7 +326,7 @@ async def clear_play_list(client, m: Message):
 
 
 
-@Client.on_message(filters.command(["cplay", f"cplay@{Config.BOT_USERNAME}"]) & admin_filter & chat_filter)
+@Client.on_message(filters.command(["cplay", f"cplay@{Config.BOT_USERNAME}"], PREFIX) & admin_filter & chat_filter)
 async def channel_play_list(client, m: Message):
     with suppress(MessageIdInvalid, MessageNotModified):
         k=await m.reply("Setting up for channel play..")
@@ -388,7 +388,7 @@ async def channel_play_list(client, m: Message):
 
 
 
-@Client.on_message(filters.command(["yplay", f"yplay@{Config.BOT_USERNAME}"]) & admin_filter & chat_filter)
+@Client.on_message(filters.command(["yplay", f"yplay@{Config.BOT_USERNAME}"], PREFIX) & admin_filter & chat_filter)
 async def yt_play_list(client, m: Message):
     with suppress(MessageIdInvalid, MessageNotModified):
         if m.reply_to_message is not None and m.reply_to_message.document:
@@ -420,7 +420,7 @@ async def yt_play_list(client, m: Message):
             await delete_messages([m, k])
 
 
-@Client.on_message(filters.command(["stream", f"stream@{Config.BOT_USERNAME}"]) & admin_filter & chat_filter)
+@Client.on_message(filters.command(["stream", f"stream@{Config.BOT_USERNAME}"], PREFIX) & admin_filter & chat_filter)
 async def stream(client, m: Message):
     with suppress(MessageIdInvalid, MessageNotModified):
         msg=await m.reply("Checking the recived input.")
