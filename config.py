@@ -45,7 +45,7 @@ class Config:
     LOG_GROUP=os.environ.get("LOG_GROUP", "")
 
     #Stream 
-    STREAM_URL=os.environ.get("STARTUP_STREAM", "https://youtu.be/heGfoDyboog")
+    STREAM_URL=os.environ.get("STARTUP_STREAM", "https://youtube.com/playlist?list=OLAK5uy_nuXRv8HryJDIpCPwYqsX0e4EqiuKXAibk")
    
     #Database
     DATABASE_URI=os.environ.get("DATABASE_URI", None)
